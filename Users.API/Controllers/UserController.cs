@@ -26,6 +26,22 @@ public class UserController : ControllerBase
 
         if (result.Success)
             return Ok(result);
+        else if (result.Errors.Any())
+            return BadRequest(result);
+
+        return StatusCode(StatusCodes.Status500InternalServerError);
+    }
+
+    [HttpPost("login")]
+    public async Task<IActionResult> LoginUser([FromBody] UserLoginRequest userLogin) 
+    {
+        if (!ModelState.IsValid)
+            return BadRequest();
+
+        var result = await _userService.LogInUserAsync(userLogin);
+
+        if (result.Success)
+            return Ok(result);
 
         return Unauthorized(result);
     }
