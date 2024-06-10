@@ -757,11 +757,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\edu\\GIT\\user-authentication\\Product.API\\Product.API.csproj",
+      "projectUniqueName": "c:\\edu\\GIT\\user-authentication\\Product.API\\Product.API.csproj",
       "projectName": "Product.API",
-      "projectPath": "C:\\edu\\GIT\\user-authentication\\Product.API\\Product.API.csproj",
+      "projectPath": "c:\\edu\\GIT\\user-authentication\\Product.API\\Product.API.csproj",
       "packagesPath": "C:\\Users\\Luiz Brandão\\.nuget\\packages\\",
-      "outputPath": "C:\\edu\\GIT\\user-authentication\\Product.API\\obj\\",
+      "outputPath": "c:\\edu\\GIT\\user-authentication\\Product.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Luiz Brandão\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -778,8 +778,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\edu\\GIT\\user-authentication\\ApplicationSecretKeys\\ApplicationSecretKeys.csproj": {
-              "projectPath": "C:\\edu\\GIT\\user-authentication\\ApplicationSecretKeys\\ApplicationSecretKeys.csproj"
+            "c:\\edu\\GIT\\user-authentication\\ApplicationSecretKeys\\ApplicationSecretKeys.csproj": {
+              "projectPath": "c:\\edu\\GIT\\user-authentication\\ApplicationSecretKeys\\ApplicationSecretKeys.csproj"
             }
           }
         }

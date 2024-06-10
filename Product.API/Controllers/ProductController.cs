@@ -1,3 +1,4 @@
+using ApplicationSecretKeys.Constants;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,6 +20,13 @@ namespace Product.API.Controllers
         public async Task<IActionResult> GetById(int id) 
         {
             return Ok($"product id: {id}");
+        }
+
+        [Authorize(Policy = Policies.BusinessHours)]
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteById(int id) 
+        {
+            return Ok($"Item deleted: {id}");
         }
     }
 }

@@ -11,6 +11,8 @@ builder.Services.AddSwaggerSetup();
 
 builder.Services.AddAuthenticationSetup();
 
+builder.Services.AddAuthenticationPolicies();
+
 builder.Services.AddSingleton<IProductRepository, ProductRepository>();
 
 var app = builder.Build();

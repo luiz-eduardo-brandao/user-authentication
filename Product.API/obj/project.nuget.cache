@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yCb6a1aykL/qJ+kJtUZKQaufvCc/Fz60E4f/7tfWwNMpSp6uZycUE1XjmhmcpiJenfXbz+ZagtDle2RB7WWgLQ==",
+  "dgSpecHash": "/6X4Se6LesuwmXhgTxC4sfTGcPGIaxYJbSA3pDr1PV0isDO7XGHZKOqDirwT6deepB+uRUj0Za1DFLaMprtVCw==",
   "success": true,
-  "projectFilePath": "C:\\edu\\GIT\\user-authentication\\Product.API\\Product.API.csproj",
+  "projectFilePath": "c:\\edu\\GIT\\user-authentication\\Product.API\\Product.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Luiz Brandão\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.6\\microsoft.aspnetcore.authentication.jwtbearer.8.0.6.nupkg.sha512",
     "C:\\Users\\Luiz Brandão\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
