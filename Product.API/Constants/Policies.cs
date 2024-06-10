@@ -1,4 +1,4 @@
-namespace ApplicationSecretKeys.Constants
+namespace Product.API.Constants
 {
     public class Policies
     {

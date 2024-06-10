@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\edu\\GIT\\user-authentication\\ApplicationSecretKeys\\ApplicationSecretKeys.csproj",
+      "projectUniqueName": "C:\\edu\\GIT\\user-authentication\\ApplicationSecretKeys\\ApplicationSecretKeys.csproj",
       "projectName": "ApplicationSecretKeys",
-      "projectPath": "c:\\edu\\GIT\\user-authentication\\ApplicationSecretKeys\\ApplicationSecretKeys.csproj",
+      "projectPath": "C:\\edu\\GIT\\user-authentication\\ApplicationSecretKeys\\ApplicationSecretKeys.csproj",
       "packagesPath": "C:\\Users\\Luiz Brandão\\.nuget\\packages\\",
-      "outputPath": "c:\\edu\\GIT\\user-authentication\\ApplicationSecretKeys\\obj\\",
+      "outputPath": "C:\\edu\\GIT\\user-authentication\\ApplicationSecretKeys\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Luiz Brandão\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,9 +1,9 @@
 using System.Text;
 using ApplicationSecretKeys;
-using ApplicationSecretKeys.Constants;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
+using Product.API.Constants;
 using Product.API.PolicyRequirements;
 
 namespace Product.API.Modules

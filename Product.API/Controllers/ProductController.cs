@@ -1,6 +1,6 @@
-using ApplicationSecretKeys.Constants;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Product.API.Constants;
 
 namespace Product.API.Controllers
 {
@@ -20,6 +20,13 @@ namespace Product.API.Controllers
         public async Task<IActionResult> GetById(int id) 
         {
             return Ok($"product id: {id}");
+        }
+
+        [Authorize(Roles = Roles.Admin)]
+        [HttpPost]        
+        public async Task<IActionResult> Post([FromBody] string productName) 
+        {
+            return Ok(productName);
         }
 
         [Authorize(Policy = Policies.BusinessHours)]
