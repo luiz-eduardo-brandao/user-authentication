@@ -3,7 +3,9 @@ using Users.API.Modules;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDataContext(builder.Configuration);
-    
+
+// builder.Services.AddCors();
+
 builder.Services.AddIdentityConfiguration();
     
 builder.Services.AddControllers();
@@ -27,6 +29,13 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 
 app.UseAuthorization();
+
+// app.UseCors(x => x
+//     .AllowAnyMethod()
+//     .AllowAnyHeader()
+//     .SetIsOriginAllowed(origin => true) // allow any origin
+//     .AllowCredentials()); // allow credentials
+
 
 app.MapControllers();
 

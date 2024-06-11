@@ -21,17 +21,30 @@ public class UserController : ControllerBase
     [HttpPost("register")]
     public async Task<ActionResult<RegisterUserResponse>> RegisterUser([FromBody] RegisterUserRequest registerUser) 
     {
-        if (!ModelState.IsValid)
+        try
+        {
+            if (!ModelState.IsValid)
             return BadRequest();
 
-        var result = await _userService.RegisterUserAsync(registerUser);
+            var result = await _userService.RegisterUserAsync(registerUser);
 
-        if (result.Success)
-            return Ok(result);
-        else if (result.Errors.Any())
-            return BadRequest(result);
+            if (result.Success) 
+            {
+                var callbackUrl = GenerateCallbackUrl(result.EmailConfirmation.UserId, result.EmailConfirmation.VerificationCode);
 
-        return StatusCode(StatusCodes.Status500InternalServerError);
+                var response = await _userService.SendConfirmationEmail(result.EmailConfirmation.UserId, callbackUrl);
+
+                return Ok(result);
+            }
+            else if (result.Errors.Any())
+                return BadRequest(result);
+
+            return StatusCode(StatusCodes.Status500InternalServerError);   
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
     }
 
     [HttpPost("login")]
@@ -64,5 +77,26 @@ public class UserController : ControllerBase
             return Ok(result);
 
         return Unauthorized();
+    }
+
+    [HttpGet("confirm-email")]
+    public async Task<ActionResult<EmailConfirmationResponse>> ConfirmUserEmail(string userId, string code) 
+    {
+        var result = await _userService.ConfirmUserEmailAsync(userId, code);
+
+        if (result.Success)
+            return Ok(result);
+
+        return BadRequest(result);
+    }
+
+    private string GenerateCallbackUrl(string userId, string code) 
+    {
+        return Request.Scheme + "://" + Request.Host + Url.Action("ConfirmUserEmail", "User",
+            new {
+                userId,
+                code
+            }
+        );
     }
 }

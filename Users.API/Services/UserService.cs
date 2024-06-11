@@ -1,11 +1,13 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using System.Text.Encodings.Web;
 using ApplicationSecretKeys;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using Users.API.DTOs.Requests;
 using Users.API.DTOs.Responses;
+using Users.API.Models;
 
 namespace Users.API.Services
 {
@@ -26,20 +28,85 @@ namespace Users.API.Services
             {
                 UserName = registerUser.UserName,
                 Email = registerUser.Email,
-                EmailConfirmed = true
+                EmailConfirmed = false
             };
 
             var result = await _userManager.CreateAsync(user, registerUser.Password); 
 
-            if (result.Succeeded)
-                await _userManager.SetLockoutEnabledAsync(user, false);
+            if (result.Succeeded) 
+            {
+                var userId = await _userManager.GetUserIdAsync(user);
+                var verificationCode = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
+                if (string.IsNullOrWhiteSpace(userId) || string.IsNullOrWhiteSpace(verificationCode))
+                    return new RegisterUserResponse {
+                        Success = false,
+                        Errors = ["Email confirmation code invalid. Try again"]
+                    };
+
+                return new RegisterUserResponse 
+                {
+                    Success = true,
+                    EmailConfirmation = new UserEmailConfirmation(userId, user.Email, verificationCode)
+                };
+            }
+                
             var registerResponse = new RegisterUserResponse(result.Succeeded);
 
             if (!result.Succeeded && result.Errors.Any())
                 registerResponse.AddErrors(result.Errors.Select(e => e.Description));
 
             return registerResponse;
+        }
+
+        // public async Task SendNewVerificationCode(string userId) 
+        // {
+            // var verificationCode = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+
+            // return new RegisterUserResponse 
+            // {
+            //     Success = true,
+            //     UserId = userId,
+            //     VerificationCode = verificationCode
+            // };
+        // }
+
+        public async Task<RegisterUserResponse> SendConfirmationEmail(UserEmailConfirmation emailConfirmation, string callbackUrl) 
+        {
+            var user = await _userManager.FindByIdAsync(emailConfirmation.UserId);
+
+            if (user == null)
+                return new RegisterUserResponse { Success = false, Errors = ["User not found"] };
+
+            var emailBody = GenerateBodyConfirmationEmail(callbackUrl);
+
+            await SendEmail(callbackUrl);
+
+            return new RegisterUserResponse {
+                Success = true,
+                Message = $"Verification code sent to the e-mail: <strong>{emailConfirmation.Email}</strong>. Please confirm before login"
+            };
+        }
+
+        public async Task<EmailConfirmationResponse> ConfirmUserEmailAsync(string userId, string verificationCode) 
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+
+            if (user == null)
+                return new EmailConfirmationResponse { Success = false, Error = "This user does not exist" };
+
+            var result = await _userManager.ConfirmEmailAsync(user, verificationCode);
+
+            var emailConfirmationResponse = new EmailConfirmationResponse(result.Succeeded);
+
+            if (emailConfirmationResponse.Success) 
+                await _userManager.SetLockoutEnabledAsync(user, false);
+            
+            if (result.Errors.Any()) 
+                emailConfirmationResponse.AddError(result.Errors.Select(e => e.Description)
+                    .FirstOrDefault() ?? "Invalid email confirmation");
+
+            return emailConfirmationResponse;
         }
 
         public async Task<UserLoginResponse> LogInUserAsync(UserLoginRequest userLogin) 
@@ -49,14 +116,21 @@ namespace Users.API.Services
             if (user == null)
                 return new UserLoginResponse { Success = false, Error = "This user does not exist" };
 
-            var result = await _signInManager.PasswordSignInAsync(user.UserName, userLogin.Password, false, true);
+            var result = await _signInManager.PasswordSignInAsync(user.UserName, userLogin.Password, true, true);
 
             var userLoginResponse = new UserLoginResponse(result.Succeeded);
+
+            if (!await _userManager.IsEmailConfirmedAsync(user)) 
+            {
+                userLoginResponse.AddError("You need to confirm your email first to login");
+
+                return userLoginResponse;
+            }
 
             if (result.Succeeded)
                 return await GenerateCredentials(user);
 
-            if (result.IsLockedOut)
+            else if (result.IsLockedOut)
                 userLoginResponse.AddError("This account is locked out");
             else if (result.IsNotAllowed)
                 userLoginResponse.AddError("This account is not allowed");
@@ -83,6 +157,20 @@ namespace Users.API.Services
                 return await GenerateCredentials(user);
 
             return userLoginResponse;
+        }
+
+        private string GenerateBodyConfirmationEmail(string callbackUrl) 
+        {
+            var emailBody = $"Please confirm your email address <a href=\"#URL#\"> Click here </a> ";
+
+            var body = emailBody.Replace("#URL#", HtmlEncoder.Default.Encode(callbackUrl));
+
+            return body;
+        }
+
+        private async Task SendEmail(string emailBody) 
+        {
+
         }
 
         private async Task<UserLoginResponse> GenerateCredentials(IdentityUser user)  

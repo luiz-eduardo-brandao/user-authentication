@@ -1,11 +1,10 @@
 using System.Text.Json.Serialization;
+using Users.API.Models.Base;
 
 namespace Users.API.DTOs.Responses
 {
-    public class UserLoginResponse
+    public class UserLoginResponse : BaseResult
     {
-        public bool Success { get; set; }
-        public string Error { get; set; }
         public DateTime ExpirationDate { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
@@ -16,15 +15,8 @@ namespace Users.API.DTOs.Responses
 
         public UserLoginResponse() {}
 
-        public UserLoginResponse(bool status)
+        public UserLoginResponse(bool status) : base(status)
         {
-            Success = status;
-        }
-
-        public void AddError(string error) 
-        {
-            Success = false;
-            Error = error;
         }
     }
 }
