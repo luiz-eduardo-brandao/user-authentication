@@ -7,5 +7,6 @@ namespace Users.API.Services
     {
         Task<RegisterUserResponse> RegisterUserAsync(RegisterUserRequest registerUser);
         Task<UserLoginResponse> LogInUserAsync(UserLoginRequest userLogin);
+        Task<UserLoginResponse> RefreshLogInAsync(string userId);
     }
 }
