@@ -1,9 +1,14 @@
+using Users.API.Models.Base;
+
 namespace Users.API.Models
 {
-    public class UserEmailConfirmation
+    public class EmailVerificationModel : BaseResult
     {
-        public UserEmailConfirmation(string userId, string email, string code)
+        public EmailVerificationModel() { }
+
+        public EmailVerificationModel(string userId, string email, string code)
         {
+            Success = true;
             UserId = userId;
             Email = email;
             VerificationCode = code;

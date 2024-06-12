@@ -30,9 +30,14 @@ public class UserController : ControllerBase
 
             if (result.Success) 
             {
-                var callbackUrl = GenerateCallbackUrl(result.EmailConfirmation.UserId, result.EmailConfirmation.VerificationCode);
+                var emailVerification = await _userService.GenerateEmailVerificationCode(result.User);
 
-                var response = await _userService.SendConfirmationEmail(result.EmailConfirmation.UserId, callbackUrl);
+                if (!emailVerification.Success)
+                    return BadRequest(emailVerification);
+
+                var callbackUrl = GenerateCallbackUrl(emailVerification.UserId, emailVerification.VerificationCode);
+
+                var response = await _userService.SendConfirmationEmail(emailVerification.Email, callbackUrl);
 
                 return Ok(result);
             }
@@ -92,11 +97,6 @@ public class UserController : ControllerBase
 
     private string GenerateCallbackUrl(string userId, string code) 
     {
-        return Request.Scheme + "://" + Request.Host + Url.Action("ConfirmUserEmail", "User",
-            new {
-                userId,
-                code
-            }
-        );
+        return Request.Scheme + "://" + Request.Host + Url.Action("ConfirmUserEmail", "User", new { userId, code } );
     }
 }

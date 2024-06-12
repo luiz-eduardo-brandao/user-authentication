@@ -34,22 +34,7 @@ namespace Users.API.Services
             var result = await _userManager.CreateAsync(user, registerUser.Password); 
 
             if (result.Succeeded) 
-            {
-                var userId = await _userManager.GetUserIdAsync(user);
-                var verificationCode = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-
-                if (string.IsNullOrWhiteSpace(userId) || string.IsNullOrWhiteSpace(verificationCode))
-                    return new RegisterUserResponse {
-                        Success = false,
-                        Errors = ["Email confirmation code invalid. Try again"]
-                    };
-
-                return new RegisterUserResponse 
-                {
-                    Success = true,
-                    EmailConfirmation = new UserEmailConfirmation(userId, user.Email, verificationCode)
-                };
-            }
+                return new RegisterUserResponse(result.Succeeded, user);
                 
             var registerResponse = new RegisterUserResponse(result.Succeeded);
 
@@ -59,33 +44,46 @@ namespace Users.API.Services
             return registerResponse;
         }
 
-        // public async Task SendNewVerificationCode(string userId) 
-        // {
-            // var verificationCode = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-
-            // return new RegisterUserResponse 
-            // {
-            //     Success = true,
-            //     UserId = userId,
-            //     VerificationCode = verificationCode
-            // };
-        // }
-
-        public async Task<RegisterUserResponse> SendConfirmationEmail(UserEmailConfirmation emailConfirmation, string callbackUrl) 
+        public async Task<EmailVerificationModel> GenerateEmailVerificationCode(IdentityUser user) 
         {
-            var user = await _userManager.FindByIdAsync(emailConfirmation.UserId);
+            var result = await _userManager.FindByNameAsync(user.UserName);
 
-            if (user == null)
-                return new RegisterUserResponse { Success = false, Errors = ["User not found"] };
+            if (result == null) 
+                return new EmailVerificationModel {
+                    Success = false,
+                    Error = "Invalid email confirmation: User not found."
+                };
 
-            var emailBody = GenerateBodyConfirmationEmail(callbackUrl);
+            var userId = await _userManager.GetUserIdAsync(user);
+            var verificationCode = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
-            await SendEmail(callbackUrl);
+            if (string.IsNullOrWhiteSpace(userId) || string.IsNullOrWhiteSpace(verificationCode))
+                return new EmailVerificationModel {
+                    Success = false,
+                    Error = "Email confirmation code invalid. Try again"
+                };
 
-            return new RegisterUserResponse {
-                Success = true,
-                Message = $"Verification code sent to the e-mail: <strong>{emailConfirmation.Email}</strong>. Please confirm before login"
-            };
+            return new EmailVerificationModel(userId, user.Email, verificationCode);
+        }
+
+        public async Task<RegisterUserResponse> SendConfirmationEmail(string email, string callbackUrl) 
+        {
+            try
+            {
+                await SendConfirmationEmail(GenerateBodyConfirmationEmail(callbackUrl));
+
+                return new RegisterUserResponse {
+                    Success = true,
+                    Message = $"Verification code sent to the e-mail: <strong>{email}</strong>. Please confirm before login"
+                };   
+            }
+            catch (Exception ex)
+            {
+                return new RegisterUserResponse {
+                    Success = false,
+                    Errors = [ex.Message]
+                };   
+            }
         }
 
         public async Task<EmailConfirmationResponse> ConfirmUserEmailAsync(string userId, string verificationCode) 
@@ -122,7 +120,7 @@ namespace Users.API.Services
 
             if (!await _userManager.IsEmailConfirmedAsync(user)) 
             {
-                userLoginResponse.AddError("You need to confirm your email first to login");
+                userLoginResponse.AddError("This account is locked. You need to confirm your email before login");
 
                 return userLoginResponse;
             }
@@ -130,7 +128,7 @@ namespace Users.API.Services
             if (result.Succeeded)
                 return await GenerateCredentials(user);
 
-            else if (result.IsLockedOut)
+            if (result.IsLockedOut)
                 userLoginResponse.AddError("This account is locked out");
             else if (result.IsNotAllowed)
                 userLoginResponse.AddError("This account is not allowed");
@@ -148,6 +146,9 @@ namespace Users.API.Services
 
             var user = await _userManager.FindByIdAsync(userId);
 
+            if (user == null)
+                return new UserLoginResponse { Success = false, Error = "This user does not exist" };
+
             if (await _userManager.IsLockedOutAsync(user))
                 userLoginResponse.AddError("This account is locked");
             else if (!await _userManager.IsEmailConfirmedAsync(user))
@@ -159,18 +160,31 @@ namespace Users.API.Services
             return userLoginResponse;
         }
 
-        private string GenerateBodyConfirmationEmail(string callbackUrl) 
+
+        private async Task SendConfirmationEmail(string emailBody) 
         {
-            var emailBody = $"Please confirm your email address <a href=\"#URL#\"> Click here </a> ";
 
-            var body = emailBody.Replace("#URL#", HtmlEncoder.Default.Encode(callbackUrl));
-
-            return body;
         }
 
-        private async Task SendEmail(string emailBody) 
+        private string GenerateBodyConfirmationEmail(string callbackUrl) 
         {
+            var emailBody = @"
+                <div style=\""margin: 10px display: flex; justify-content: center; align-items: center;'\"">
+                    Please, confirm your email address:  
+                    <button style=\""background-color: dodgerblue; padding: 10px; border-radius: 3px; margin-left: 10px;\"">
+                        <a 
+                            style=\""color: fefefe;\""
+                            target=\""_blank\""
+                            href=\""#URL#\""> 
+                            Click here 
+                        </a> 
+                    </button>
+                </div>
+            "; 
+            
+            // $"Please confirm your email address <a href=\"#URL#\"> Click here </a> ";
 
+            return emailBody.Replace("#URL#", HtmlEncoder.Default.Encode(callbackUrl));
         }
 
         private async Task<UserLoginResponse> GenerateCredentials(IdentityUser user)  

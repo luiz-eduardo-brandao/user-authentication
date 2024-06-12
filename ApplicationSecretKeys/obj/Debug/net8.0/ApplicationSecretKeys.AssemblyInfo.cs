@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ApplicationSecretKeys")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b168cb3034996cb858b32821684adda2e0f57ad4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b83544ac5f3c905f2b591f57a6d8f49633e08900")]
 [assembly: System.Reflection.AssemblyProductAttribute("ApplicationSecretKeys")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ApplicationSecretKeys")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
