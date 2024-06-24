@@ -4,7 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDataContext(builder.Configuration);
 
-// builder.Services.AddCors();
+builder.Services.AddCors();
 
 builder.Services.AddIdentityConfiguration();
     
@@ -30,11 +30,11 @@ app.UseAuthentication();
 
 app.UseAuthorization();
 
-// app.UseCors(x => x
-//     .AllowAnyMethod()
-//     .AllowAnyHeader()
-//     .SetIsOriginAllowed(origin => true) // allow any origin
-//     .AllowCredentials()); // allow credentials
+app.UseCors(x => x
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    .SetIsOriginAllowed(origin => true) // allow any origin
+    .AllowCredentials()); // allow credentials
 
 
 app.MapControllers();

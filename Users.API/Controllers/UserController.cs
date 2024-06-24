@@ -18,6 +18,17 @@ public class UserController : ControllerBase
         _userService = userService;
     }
 
+    [HttpGet("test/{status}")]
+    public IActionResult Get(int status) 
+    {
+        if (status == 1)
+            return Ok("test requisição");
+        else if (status == 2)
+            return BadRequest("error bad request - teste");
+        else 
+            return StatusCode(StatusCodes.Status500InternalServerError);  
+    }
+
     [HttpPost("register")]
     public async Task<ActionResult<RegisterUserResponse>> RegisterUser([FromBody] RegisterUserRequest registerUser) 
     {
