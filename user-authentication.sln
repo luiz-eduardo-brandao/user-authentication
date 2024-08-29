@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product.API", "Product.API\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationSecretKeys", "ApplicationSecretKeys\ApplicationSecretKeys.csproj", "{0A5BFAE4-56F3-4030-851C-BB3EE3FD2A5A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Users.Tests", "Users.Tests\Users.Tests.csproj", "{4AC12C13-4463-45DC-9C59-8CAE8F660100}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{0A5BFAE4-56F3-4030-851C-BB3EE3FD2A5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A5BFAE4-56F3-4030-851C-BB3EE3FD2A5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A5BFAE4-56F3-4030-851C-BB3EE3FD2A5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AC12C13-4463-45DC-9C59-8CAE8F660100}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AC12C13-4463-45DC-9C59-8CAE8F660100}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AC12C13-4463-45DC-9C59-8CAE8F660100}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AC12C13-4463-45DC-9C59-8CAE8F660100}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

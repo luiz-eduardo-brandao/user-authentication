@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Qc+Wxrf1U1zEAM98jYF4AAWucvzTisV48BuGPF4DpReA1CroJzSCFHx5UXdO7gp0F+SQj4spHHddBEOtu382UQ==",
+  "dgSpecHash": "gRaID35ISzc=",
   "success": true,
-  "projectFilePath": "c:\\edu\\GIT\\user-authentication\\ApplicationSecretKeys\\ApplicationSecretKeys.csproj",
+  "projectFilePath": "C:\\edu\\GIT\\user-authentication\\ApplicationSecretKeys\\ApplicationSecretKeys.csproj",
   "expectedPackageFiles": [],
   "logs": [
     {

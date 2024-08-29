@@ -108,6 +108,9 @@ public class UserController : ControllerBase
 
     private string GenerateCallbackUrl(string userId, string code) 
     {
+        if (Request is null)
+            return "";
+
         return Request.Scheme + "://" + Request.Host + Url.Action("ConfirmUserEmail", "User", new { userId, code } );
     }
 }

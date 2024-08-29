@@ -153,7 +153,10 @@
       },
       "ApplicationSecretKeys/1.0.0": {
         "runtime": {
-          "ApplicationSecretKeys.dll": {}
+          "ApplicationSecretKeys.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

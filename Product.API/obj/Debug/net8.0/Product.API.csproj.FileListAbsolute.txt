@@ -33,7 +33,6 @@ C:\edu\GIT\user-authentication\Product.API\obj\Debug\net8.0\staticwebassets\msbu
 C:\edu\GIT\user-authentication\Product.API\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Product.API.props
 C:\edu\GIT\user-authentication\Product.API\obj\Debug\net8.0\staticwebassets.pack.json
 C:\edu\GIT\user-authentication\Product.API\obj\Debug\net8.0\scopedcss\bundle\Product.API.styles.css
-C:\edu\GIT\user-authentication\Product.API\obj\Debug\net8.0\Product.API.csproj.CopyComplete
 C:\edu\GIT\user-authentication\Product.API\obj\Debug\net8.0\Product.API.dll
 C:\edu\GIT\user-authentication\Product.API\obj\Debug\net8.0\refint\Product.API.dll
 C:\edu\GIT\user-authentication\Product.API\obj\Debug\net8.0\Product.API.pdb
@@ -41,3 +40,4 @@ C:\edu\GIT\user-authentication\Product.API\obj\Debug\net8.0\Product.API.genrunti
 C:\edu\GIT\user-authentication\Product.API\obj\Debug\net8.0\ref\Product.API.dll
 c:\edu\GIT\user-authentication\Product.API\bin\Debug\net8.0\ApplicationSecretKeys.dll
 c:\edu\GIT\user-authentication\Product.API\bin\Debug\net8.0\ApplicationSecretKeys.pdb
+C:\edu\GIT\user-authentication\Product.API\obj\Debug\net8.0\Product..3613E4EC.Up2Date

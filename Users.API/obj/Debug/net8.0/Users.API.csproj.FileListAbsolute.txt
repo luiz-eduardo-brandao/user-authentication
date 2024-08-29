@@ -139,7 +139,6 @@ C:\edu\GIT\user-authentication\Users.API\obj\Debug\net8.0\staticwebassets\msbuil
 C:\edu\GIT\user-authentication\Users.API\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Users.API.props
 C:\edu\GIT\user-authentication\Users.API\obj\Debug\net8.0\staticwebassets.pack.json
 C:\edu\GIT\user-authentication\Users.API\obj\Debug\net8.0\scopedcss\bundle\Users.API.styles.css
-C:\edu\GIT\user-authentication\Users.API\obj\Debug\net8.0\Users.API.csproj.CopyComplete
 C:\edu\GIT\user-authentication\Users.API\obj\Debug\net8.0\Users.API.dll
 C:\edu\GIT\user-authentication\Users.API\obj\Debug\net8.0\refint\Users.API.dll
 C:\edu\GIT\user-authentication\Users.API\obj\Debug\net8.0\Users.API.pdb
@@ -147,3 +146,4 @@ C:\edu\GIT\user-authentication\Users.API\obj\Debug\net8.0\Users.API.genruntimeco
 C:\edu\GIT\user-authentication\Users.API\obj\Debug\net8.0\ref\Users.API.dll
 C:\edu\GIT\user-authentication\Users.API\bin\Debug\net8.0\ApplicationSecretKeys.dll
 C:\edu\GIT\user-authentication\Users.API\bin\Debug\net8.0\ApplicationSecretKeys.pdb
+C:\edu\GIT\user-authentication\Users.API\obj\Debug\net8.0\Users.API.csproj.Up2Date

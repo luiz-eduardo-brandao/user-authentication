@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xSBxdkmp8mNwbnELnoVnpIrL+kfDVLhqkIhXObgBdjW9/u6LQlRFQNeKOcqOuse2hnMSoJvqW4NSwifkAV+ZBw==",
+  "dgSpecHash": "/rILKJ9DFrM=",
   "success": true,
-  "projectFilePath": "c:\\edu\\GIT\\user-authentication\\Users.API\\Users.API.csproj",
+  "projectFilePath": "C:\\edu\\GIT\\user-authentication\\Users.API\\Users.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Luiz Brandão\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Luiz Brandão\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

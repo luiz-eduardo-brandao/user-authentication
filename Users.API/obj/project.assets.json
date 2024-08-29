@@ -4637,11 +4637,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\edu\\GIT\\user-authentication\\Users.API\\Users.API.csproj",
+      "projectUniqueName": "C:\\edu\\GIT\\user-authentication\\Users.API\\Users.API.csproj",
       "projectName": "Users.API",
-      "projectPath": "c:\\edu\\GIT\\user-authentication\\Users.API\\Users.API.csproj",
+      "projectPath": "C:\\edu\\GIT\\user-authentication\\Users.API\\Users.API.csproj",
       "packagesPath": "C:\\Users\\Luiz Brandão\\.nuget\\packages\\",
-      "outputPath": "c:\\edu\\GIT\\user-authentication\\Users.API\\obj\\",
+      "outputPath": "C:\\edu\\GIT\\user-authentication\\Users.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Luiz Brandão\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -4651,6 +4651,7 @@
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "http://nuget.signa.net.br/webapi/nuget": {},
         "https://api.nuget.org/v3/index.json": {}
       },
@@ -4658,8 +4659,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "c:\\edu\\GIT\\user-authentication\\ApplicationSecretKeys\\ApplicationSecretKeys.csproj": {
-              "projectPath": "c:\\edu\\GIT\\user-authentication\\ApplicationSecretKeys\\ApplicationSecretKeys.csproj"
+            "C:\\edu\\GIT\\user-authentication\\ApplicationSecretKeys\\ApplicationSecretKeys.csproj": {
+              "projectPath": "C:\\edu\\GIT\\user-authentication\\ApplicationSecretKeys\\ApplicationSecretKeys.csproj"
             }
           }
         }
@@ -4668,6 +4669,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -4718,7 +4724,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
   },

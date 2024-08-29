@@ -1,0 +1,74 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\edu\\GIT\\user-authentication\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4AC12C13-4463-45DC-9C59-8CAE8F660100}|Users.Tests\\Users.Tests.csproj|c:\\edu\\git\\user-authentication\\users.tests\\tests\\controllers\\usercontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4AC12C13-4463-45DC-9C59-8CAE8F660100}|Users.Tests\\Users.Tests.csproj|solutionrelative:users.tests\\tests\\controllers\\usercontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{737A0372-C5E9-4982-A331-0612A81E533B}|Users.API\\Users.API.csproj|c:\\edu\\git\\user-authentication\\users.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{737A0372-C5E9-4982-A331-0612A81E533B}|Users.API\\Users.API.csproj|solutionrelative:users.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{737A0372-C5E9-4982-A331-0612A81E533B}|Users.API\\Users.API.csproj|c:\\edu\\git\\user-authentication\\users.api\\services\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{737A0372-C5E9-4982-A331-0612A81E533B}|Users.API\\Users.API.csproj|solutionrelative:users.api\\services\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\edu\\GIT\\user-authentication\\Users.API\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Users.API\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\edu\\GIT\\user-authentication\\Users.API\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Users.API\\Controllers\\UserController.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAASwCUAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T23:39:51.478Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IUserService.cs",
+              "DocumentMoniker": "C:\\edu\\GIT\\user-authentication\\Users.API\\Services\\IUserService.cs",
+              "RelativeDocumentMoniker": "Users.API\\Services\\IUserService.cs",
+              "ToolTip": "C:\\edu\\GIT\\user-authentication\\Users.API\\Services\\IUserService.cs",
+              "RelativeToolTip": "Users.API\\Services\\IUserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T23:53:31.908Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserControllerTests.cs",
+              "DocumentMoniker": "C:\\edu\\GIT\\user-authentication\\Users.Tests\\Tests\\Controllers\\UserControllerTests.cs",
+              "RelativeDocumentMoniker": "Users.Tests\\Tests\\Controllers\\UserControllerTests.cs",
+              "ToolTip": "C:\\edu\\GIT\\user-authentication\\Users.Tests\\Tests\\Controllers\\UserControllerTests.cs",
+              "RelativeToolTip": "Users.Tests\\Tests\\Controllers\\UserControllerTests.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAcwGoAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T23:38:46.8Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
